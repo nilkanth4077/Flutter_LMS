@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
 import 'course_carousel.dart';
+import 'components/bottom_nav.dart';
+import 'components/appbar.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int _currentIndex = 0; // For bottom navigation
+
+  void _onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+    // Handle navigation based on index if needed
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,63 +33,20 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'FlowBite',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+      home: Scaffold(
+        appBar: CustomAppBar(),
+        body: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+            ),
+            CourseCarousel(), // Use the carousel here
+          ],
         ),
-        backgroundColor: Colors.black87,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            color: Colors.white,
-            onPressed: () {
-              // Add search functionality here
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            color: Colors.white,
-            onPressed: () {
-              // Add notifications functionality here
-            },
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-          ),
-          CourseCarousel(), // Use the carousel here
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorites',
-          ),
-        ],
+        bottomNavigationBar: CustomBottomNav(
+          currentIndex: _currentIndex,
+          onTap: _onTabTapped,
+        ),
       ),
     );
   }
