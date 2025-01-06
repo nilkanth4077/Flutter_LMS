@@ -15,7 +15,10 @@ class CustomBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Colors.black,
       currentIndex: currentIndex,
+      selectedItemColor: Colors.white, // Color for selected icon
+      unselectedItemColor: Colors.white, // Color for unselected icon
       onTap: (index) {
         // Handle navigation based on index
         if (index == 0) {

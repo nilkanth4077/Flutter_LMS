@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(10.0),
             ),
             CourseCarousel(), // Use the carousel here
           ],
