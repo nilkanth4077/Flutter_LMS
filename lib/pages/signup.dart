@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
-import 'components/appbar.dart';
-import 'components/bottom_nav.dart';
+import '../components/appbar.dart';
+import '../components/bottom_nav.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});

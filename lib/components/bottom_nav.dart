@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms_app/main.dart';
-import 'package:lms_app/login.dart';
+import 'package:lms_app/pages/login.dart';
 
 class CustomBottomNav extends StatelessWidget {
   final int currentIndex;

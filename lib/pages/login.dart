@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
-import 'components/appbar.dart'; // Import your custom app bar
-import 'components/bottom_nav.dart'; // Import your custom bottom nav
+import '../components/appbar.dart'; // Import your custom app bar
+import '../components/bottom_nav.dart'; // Import your custom bottom nav
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

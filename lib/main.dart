@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'course_carousel.dart';
+import 'components/course_carousel.dart';
 import 'components/bottom_nav.dart';
 import 'components/appbar.dart';
 

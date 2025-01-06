@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms_app/login.dart';
+import 'package:lms_app/pages/login.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
