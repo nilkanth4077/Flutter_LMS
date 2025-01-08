@@ -61,11 +61,15 @@ class _HomePageState extends State<HomePage> {
                         elevation: 3,
                         margin: const EdgeInsets.all(8.0),
                         child: ListTile(
-                          leading: Image.network(
-                            course['p_link'],
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
+                          leading: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            // Adjust the radius as needed
+                            child: Image.network(
+                              course['p_link'],
+                              width: 90,
+                              height: 50,
+                              fit: BoxFit.fill,
+                            ),
                           ),
                           title: Text(course['course_name']),
                           subtitle: Text(course['instructor']),
@@ -81,10 +85,6 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: CustomBottomNav(
         currentIndex: _currentIndex,
         onTap: _onTabTapped,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: fetchCourses,
-        child: const Icon(Icons.refresh),
       ),
     );
   }
