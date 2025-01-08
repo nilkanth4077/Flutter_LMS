@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../api_service.dart';
 import '../components/course_carousel.dart';
 import '../components/bottom_nav.dart';
 import '../components/appbar.dart';
+import '/api_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _currentIndex = index;
     });
-    // Handle navigation based on index if needed
   }
 
   @override
@@ -31,16 +30,13 @@ class _HomePageState extends State<HomePage> {
 
   void fetchCourses() async {
     print('Fetching Courses...');
-    try {
-      final List<dynamic> fetchedCourses = await ApiService.fetchCourses();
-      setState(() {
-        courses = fetchedCourses;
-        isLoadedCourses = true;
-      });
-      print('Courses fetched successfully');
-    } catch (e) {
-      print('Error fetching courses: $e');
-    }
+    final courseData =
+        await ApiService.fetchCourses(); // Use the ApiService to fetch courses
+    setState(() {
+      courses = courseData;
+      isLoadedCourses = true;
+    });
+    print('Courses fetched successfully');
   }
 
   @override
@@ -49,8 +45,10 @@ class _HomePageState extends State<HomePage> {
       appBar: CustomAppBar(),
       body: Column(
         children: [
-          Expanded(child: CourseCarousel()),
-          // Displaying Courses
+          Expanded(
+            child: CourseCarousel(
+                courses: courses), // Pass courses data to the carousel
+          ),
           Expanded(
             child: isLoadedCourses
                 ? ListView.builder(
