@@ -71,7 +71,10 @@ class _HomePageState extends State<HomePage> {
                           ),
                           title: Text(course['course_name']),
                           subtitle: Text(course['instructor']),
-                          trailing: Text('\$${course['price']}'),
+                          trailing: Text(
+                            '₹${course['price']}',
+                            style: const TextStyle(fontSize: 19),
+                          ),
                         ),
                       );
                     },
